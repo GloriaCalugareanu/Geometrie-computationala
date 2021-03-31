@@ -11,9 +11,9 @@ namespace _24_02_2021
         static void Main(string[] args)
         {
             //Primaproblema();
-            //problemaDoi();
-            problemaTrei();
-            problema4();
+            problemaDoi();
+           // problemaTrei();
+           // problema4();
         }
 
         private static void problema4()
@@ -30,8 +30,8 @@ namespace _24_02_2021
             c = xA * yB - xB * yA;
             a = yA - yB;
             b = xA - xB;
-           if (b<0)
-                Console.WriteLine("AB:"+a+"x"+b+"y"+c+"=0);
+            if (b < 0) ;
+                
         }
 
         private static void problemaTrei()
@@ -59,7 +59,7 @@ namespace _24_02_2021
             Console.WriteLine($"d1 : {a1}x + {b1}y + {c1} = 0");
             Console.WriteLine($"d2 : {a2}x + {b2}y + {c2} = 0");
             Console.WriteLine($"d3 : {a3}x + {b3}y + {c3} = 0");
-            double det = (a1 * b2 * c3 + c1 * a2 * b3 + b1 * c2 * a3 - c1 * b2 * a3 + a1 * c2 * b3 - b1 * a2 * c3);
+            double det = a1 * b2 * c3 + c1 * a2 * b3 + b1 * c2 * a3 - (c1 * b2 * a3 + a1 * c2 * b3 - b1 * a2 * c3);
             if (det == 0)
             {
                 Console.WriteLine("Sunt concurente");
