@@ -20,16 +20,19 @@ namespace QuickHull
             InitializeComponent();
             pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
             Graphics graphics = Graphics.FromImage(pictureBox1.Image);
-            graphics.Clear(Color.White);
-            points = new List<Point>();
+            graphics.Clear(Color.AliceBlue);
             hullPoints = new List<Point>();
+            points = new List<Point>();
+
+
+          
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
             Graphics graphics = Graphics.FromImage(pictureBox1.Image);
-            Pen pen = new Pen(Color.Blue);
-            pen.Width = 3;
+            Pen pen = new Pen(Color.RosyBrown);
+            pen.Width = 7;
             if (e.Button == MouseButtons.Left)
             {
                 points.Add(new Point(e.X, e.Y));
@@ -154,7 +157,7 @@ namespace QuickHull
                 pictureBox1.Image = new Bitmap(pictureBox1.Width, pictureBox1.Height);
                 Graphics graphics1 = Graphics.FromImage(pictureBox1.Image);
                 graphics1.Clear(Color.White);
-                Pen pen1 = new Pen(Color.Green);
+                Pen pen1 = new Pen(Color.PeachPuff);
                 pen1.Width = 3;
                 foreach (var p in points)
                 {
@@ -164,7 +167,7 @@ namespace QuickHull
 
             }
             Graphics graphics = Graphics.FromImage(pictureBox1.Image);
-            Pen pen = new Pen(Color.Green);
+            Pen pen = new Pen(Color.PaleVioletRed);
             pen.Width = 4;
             QuickHull();
             graphics.DrawPolygon(pen, hullPoints.ToArray());

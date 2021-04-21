@@ -50,7 +50,7 @@
             this.build.Name = "build";
             this.build.Size = new System.Drawing.Size(109, 46);
             this.build.TabIndex = 1;
-            this.build.Text = "Build";
+            this.build.Text = "Draw";
             this.build.UseVisualStyleBackColor = true;
             this.build.Click += new System.EventHandler(this.build_Click);
             // 

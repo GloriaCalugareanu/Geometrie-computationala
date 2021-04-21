@@ -8,31 +8,64 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Tromino
+namespace divide
+
 {
-    public partial class Form1 : Form
-    {
-        public Form1()
-        {
-            InitializeComponent();
-        }
 
-        Grid Grid;
+	public partial class Form1 : Form
+	{
+		public Form1()
+		{
+			InitializeComponent();
+		}
 
-        private void btnDrawGrid_Click(object sender, EventArgs e)
-        {
-            int orderOfGrid = (int)nudOrderOfGrid.Value;
-            int sizeOfGridTile = (int)nudSizeOfGridTile.Value;
-            Graphics graphicsObj = pnlMain.CreateGraphics();
+		private void Form1_Load(object sender, EventArgs e)
+		{
+			Engine.resx = pictureBox1.Width;
+			Engine.resy = pictureBox1.Height;
+			Engine.InitGraph();
+			Engine.g.Clear(Color.White);
+			Engine.initPoint();
+			Engine.draw();
+			pictureBox1.Image = Engine.b;
+		}
 
-            Grid = new Grid(orderOfGrid, sizeOfGridTile, graphicsObj);
-            Grid.Draw();
-            lblInstruction.Visible = true;
-        }
+		private void BtnClear_Click(object sender, EventArgs e)
+		{
+			Jarvis.Points.Clear();
+			Engine.g.Clear(Color.White);
+			pictureBox1.Image = Engine.b;
+		}
 
-        private void pnlMain_Click(object sender, EventArgs e)
-        {
-            Grid.SetFirstTile(pnlMain.PointToClient(Cursor.Position));
-        }
-    }
+		private void BtnStart_Click(object sender, EventArgs e)
+		{
+			Jarvis.ConvexHull(Jarvis.Points);
+			List<Point> JRpoints = new List<Point>();
+			foreach (Point point in Jarvis.ConvexHull(Jarvis.Points))
+			{
+				Engine.g.FillEllipse(Brushes.Red, point.X - 3, point.Y - 3, 6, 6);
+				JRpoints.Add(point);
+			}
+			for (int i = 0; i < JRpoints.Count; i++)
+			{
+				if (JRpoints[JRpoints.Count - 1] == JRpoints[i])
+				{
+					Engine.g.DrawLine(new Pen(Color.Purple, 3), JRpoints[JRpoints.Count - 1], JRpoints[0]);
+				}
+				else
+				{
+					Engine.g.DrawLine(new Pen(Color.Purple, 3), JRpoints[i], JRpoints[i + 1]);
+				}
+			}
+			pictureBox1.Image = Engine.b;
+		}
+
+		private void BtnAddPoints_Click(object sender, EventArgs e)
+		{
+			Engine.initPoint();
+			Engine.draw();
+			pictureBox1.Image = Engine.b;
+		}
+
+	}
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace Jarvis
+namespace Devide
 {
 	class Engine
 	{
@@ -20,14 +20,14 @@ namespace Jarvis
 		}
 		public static Random r = new Random();
 
-        public static Point New { get; private set; }
+		public static Point New { get; private set; }
 
-        public static void initPoint()
+		public static void initPoint()
 		{
 			for (int i = 0; i < Jarvis.n; i++)
 			{
 				Point New = new Point(r.Next(r.Next(50, 150), resx - r.Next(50, 150)), r.Next(r.Next(50, 150), resy - r.Next(50, 150)));
-				
+
 				/*Point A = new Point(200, 110);
 				Point B = new Point(60, 270);
 				Point C = new Point(90, 300);
@@ -39,9 +39,9 @@ namespace Jarvis
 				Point I = new Point(210, 330);
 				Point J= new Point(210, 300);
 				*/
-				
+
 				Jarvis.Points.Add(New);
-				
+
 				/*Jarvis.Points.Add(A);
 				Jarvis.Points.Add(B);
 				Jarvis.Points.Add(C);
@@ -52,7 +52,7 @@ namespace Jarvis
 				Jarvis.Points.Add(H);
 				Jarvis.Points.Add(I);
 				Jarvis.Points.Add(J);*/
-				
+
 			}
 		}
 
